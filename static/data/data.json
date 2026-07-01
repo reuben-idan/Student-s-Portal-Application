@@ -1,0 +1,5 @@
+{
+  "departments": ["Computer Science", "Engineering", "Business Administration", "Medicine", "Law", "Arts"],
+  "levels": ["100", "200", "300", "400", "500"],
+  "regions": ["Ahafo", "Ashanti", "Bono", "Bono East", "Central", "Eastern", "Greater Accra", "North East", "Northern", "Oti", "Savannah", "Upper East", "Upper West", "Volta", "Western", "Western North"]
+}

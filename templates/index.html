@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Home | Student Portal{% endblock %}
+
+{% block content %}
+<section class="intro">
+  <div class="intro-text">
+    <h1>Welcome to the Student Portal</h1>
+    <p class="tagline">Manage your academic journey — submit your details, track your admission status, and more.</p>
+    <a href="{{ url_for('form') }}" class="btn">Get Started</a>
+  </div>
+  <div class="intro-image">
+    <img src="{{ url_for('static', filename='images/hero.svg') }}" alt="Students studying" onerror="this.style.display='none'"/>
+  </div>
+</section>
+{% endblock %}

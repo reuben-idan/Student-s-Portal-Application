@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ student["first_name"] }} {{ student["last_name"] }} | Student Portal{% endblock %}
+
+{% block content %}
+<section class="details-section">
+  <div class="details-card">
+
+    <div class="details-image">
+      <img src="{{ url_for('static', filename='uploads/' + student['image']) }}" alt="{{ student['first_name'] }}'s photo"/>
+    </div>
+
+    <div class="details-info">
+      <h2>{{ student["first_name"] }} {{ student["last_name"] }}</h2>
+
+      <table class="info-table">
+        <tr><th>Email</th><td>{{ student["email"] }}</td></tr>
+        <tr><th>Phone</th><td>{{ student["phone"] }}</td></tr>
+        <tr><th>Address</th><td>{{ student["address"] }}</td></tr>
+        <tr><th>Date of Birth</th><td>{{ student["dob"] }}</td></tr>
+        <tr><th>Age</th><td>{{ student["age"] }}</td></tr>
+        <tr><th>Gender</th><td>{{ student["gender"] }}</td></tr>
+        <tr><th>Department</th><td>{{ student["department"] }}</td></tr>
+        <tr><th>Level</th><td>{{ student["level"] }}</td></tr>
+        <tr><th>Region</th><td>{{ student["state"] }}</td></tr>
+        <tr>
+          <th>Admission Status</th>
+          <td><span id="status-display" class="status status-{{ student['admission_status'].lower() }}">{{ student["admission_status"] }}</span></td>
+        </tr>
+      </table>
+
+      <!-- Async status update form -->
+      <div class="status-form">
+        <label for="status-select">Update Admission Status:</label>
+        <select id="status-select">
+          <option value="Pending" {% if student["admission_status"] == "Pending" %}selected{% endif %}>Pending</option>
+          <option value="Admitted" {% if student["admission_status"] == "Admitted" %}selected{% endif %}>Admitted</option>
+          <option value="Rejected" {% if student["admission_status"] == "Rejected" %}selected{% endif %}>Rejected</option>
+        </select>
+        <button id="update-btn" class="btn btn-sm">Update</button>
+        <span id="update-msg"></span>
+      </div>
+
+      <a href="{{ url_for('students') }}" class="btn btn-outline">← Back to Students</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const studentId = {{ student["id"] }};
+</script>
+<script src="{{ url_for('static', filename='js/details.js') }}"></script>
+{% endblock %}
